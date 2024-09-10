@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -18,12 +19,19 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'slug',
         'email',
         'password',
         'phone_number',
         'address',
         'avatar',
     ];
+
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = $value;
+        $this->attributes['slug'] = Str::slug($value);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
