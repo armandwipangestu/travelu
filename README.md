@@ -24,6 +24,7 @@
     -   [Install dependency package](#install-dependency-package)
     -   [Generate key](#generate-key)
     -   [Running the migration and seeder](#running-the-migration-and-seeder)
+    -   [Create symbolic link for /storage/app/pubic to /public](#create-symbolic-link-for-storageapppubic-to-public)
     -   [Running the application](#running-the-application)
 -   [Deployment](#deployment)
     -   [Container (Docker Compose)](#container-docker-compose)
@@ -117,6 +118,12 @@ php artisan key:generate
 
 ```bash
 php artisan migrate:fresh --seed
+```
+
+### Create symbolic link for `/storage/app/pubic` to `/public`
+
+```bash
+php artisan storage:link
 ```
 
 ### Running the application
