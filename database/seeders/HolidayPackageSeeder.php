@@ -21,7 +21,7 @@ class HolidayPackageSeeder extends Seeder
         HolidayPackage::create([
             'category_id' => Category::where('name', 'Romantic')->value('id'),
             'banner' => 'default-holiday-package.png',
-            'title' => fake()->text(30),
+            'title' => 'Lorem Ipsum Dolor Sit Amet.',
             'description' => fake()->text(100),
             'price' => fake()->randomFloat(2, 100, 10000),
             'destination_id' => Destination::inRandomOrder()->value('id'),

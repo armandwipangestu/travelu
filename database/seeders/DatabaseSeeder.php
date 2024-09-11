@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             DestinationSeeder::class,
             HolidayPackageSeeder::class,
+            TransactionSeeder::class,
         ]);
     }
 }
