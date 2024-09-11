@@ -25,9 +25,6 @@ class CountryResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\FileUpload::make('flag')
-                    ->image(),
-
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
@@ -37,6 +34,9 @@ class CountryResource extends Resource
                 Forms\Components\TextInput::make('slug')
                     ->required()
                     ->disabled(),
+
+                Forms\Components\FileUpload::make('flag')
+                    ->image(),
             ]);
     }
 
@@ -47,9 +47,6 @@ class CountryResource extends Resource
                 Tables\Columns\ImageColumn::make('flag'),
 
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
-
-                Tables\Columns\TextColumn::make('slug')
                     ->searchable(),
             ])
             ->filters([

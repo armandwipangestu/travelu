@@ -32,7 +32,6 @@ class DestinationResource extends Resource
                     ->maxLength(255),
 
                 Forms\Components\TextInput::make('slug')
-                    ->required()
                     ->disabled(),
 
                 Forms\Components\Select::make('country_id')
@@ -42,6 +41,11 @@ class DestinationResource extends Resource
                     ->required(),
 
                 Forms\Components\Textarea::make('description'),
+
+                Forms\Components\View::make('flag_display')
+                    ->label('Flag')
+                    ->view('filament.components.flag-display')
+                    ->disabled(),
             ]);
     }
 
@@ -49,13 +53,12 @@ class DestinationResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('country.flag')
+                    ->label('Flag'),
+
                 Tables\Columns\TextColumn::make('name')
+                    ->label('City')
                     ->searchable(),
-
-                Tables\Columns\TextColumn::make('slug')
-                    ->searchable(),
-
-                Tables\Columns\ImageColumn::make('country.flag'),
 
                 Tables\Columns\TextColumn::make('country.name')
                     ->searchable(),

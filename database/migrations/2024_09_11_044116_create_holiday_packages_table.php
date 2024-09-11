@@ -23,6 +23,9 @@ return new class extends Migration
             $table->date('available_from');
             $table->date('available_to');
             $table->timestamps();
+
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('destination_id')->references('id')->on('destinations')->onDelete('cascade');
         });
     }
 

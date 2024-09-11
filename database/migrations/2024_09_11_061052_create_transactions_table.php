@@ -20,6 +20,9 @@ return new class extends Migration
             $table->string('midtrans_url')->nullable();
             $table->string('midtrans_booking_code')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('package_id')->references('id')->on('holiday_packages')->onDelete('cascade');
         });
     }
 

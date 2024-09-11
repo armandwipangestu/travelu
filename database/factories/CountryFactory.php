@@ -16,8 +16,13 @@ class CountryFactory extends Factory
      */
     public function definition(): array
     {
+        // Generate a unique country name, but filter out "Indonesia"
+        do {
+            $countryName = fake()->unique()->country();
+        } while ($countryName === 'Indonesia');
+
         return [
-            'name' => fake()->country(),
+            'name' => $countryName,
         ];
     }
 }

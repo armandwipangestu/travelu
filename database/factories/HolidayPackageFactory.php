@@ -23,7 +23,7 @@ class HolidayPackageFactory extends Factory
 
         return [
             'category_id' => Category::inRandomOrder()->value('id'),
-            'title' => fake()->text(30),
+            'title' => fake()->unique()->text(30),
             'description' => fake()->text(100),
             'price' => fake()->randomFloat(2, 100, 10000),
             'destination_id' => Destination::inRandomOrder()->value('id'),

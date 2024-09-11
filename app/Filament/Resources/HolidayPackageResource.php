@@ -25,12 +25,6 @@ class HolidayPackageResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('category_id')
-                    ->relationship('category', 'name')
-                    ->searchable()
-                    ->preload()
-                    ->required(),
-
                 Forms\Components\TextInput::make('title')
                     ->required()
                     ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
@@ -40,6 +34,12 @@ class HolidayPackageResource extends Resource
                 Forms\Components\TextInput::make('slug')
                     ->required()
                     ->disabled(),
+
+                Forms\Components\Select::make('category_id')
+                    ->relationship('category', 'name')
+                    ->searchable()
+                    ->preload()
+                    ->required(),
 
                 Forms\Components\Textarea::make('description'),
 
@@ -69,18 +69,12 @@ class HolidayPackageResource extends Resource
             ->columns([
                 Tables\Columns\ImageColumn::make('banner'),
 
-                Tables\Columns\TextColumn::make('category.name')
-                    ->searchable()
-                    ->label('Category'),
-
                 Tables\Columns\TextColumn::make('title')
                     ->searchable(),
 
-                Tables\Columns\TextColumn::make('slug')
-                    ->searchable(),
-
-                Tables\Columns\TextColumn::make('description')
-                    ->searchable(),
+                Tables\Columns\TextColumn::make('category.name')
+                    ->searchable()
+                    ->label('Category'),
 
                 Tables\Columns\TextColumn::make('price')
                     ->searchable(),
