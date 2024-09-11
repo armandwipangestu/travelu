@@ -18,6 +18,9 @@ return new class extends Migration
             $table->enum('rating', [1, 2, 3, 4, 5]);
             $table->text('comment');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('package_id')->references('id')->on('holiday_packages')->onDelete('cascade');
         });
     }
 

@@ -25,9 +25,6 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\FileUpload::make('avatar')
-                    ->image(),
-
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
@@ -54,6 +51,9 @@ class UserResource extends Resource
 
                 Forms\Components\TextInput::make('address')
                     ->required(),
+
+                Forms\Components\FileUpload::make('avatar')
+                    ->image(),
             ]);
     }
 
@@ -64,9 +64,6 @@ class UserResource extends Resource
                 Tables\Columns\ImageColumn::make('avatar'),
 
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
-
-                Tables\Columns\TextColumn::make('slug')
                     ->searchable(),
 
                 Tables\Columns\TextColumn::make('email')

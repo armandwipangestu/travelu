@@ -18,6 +18,8 @@ return new class extends Migration
             $table->foreignId('country_id');
             $table->text('description')->nullable();
             $table->timestamps();
+
+            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
         });
     }
 

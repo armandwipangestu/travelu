@@ -48,6 +48,11 @@ class ReviewResource extends Resource
                 Forms\Components\TextArea::make('comment')
                     ->required(),
 
+                Forms\Components\View::make('avatar_display')
+                    ->label('Avatar')
+                    ->view('filament.components.avatar-display')
+                    ->disabled(),
+
                 Forms\Components\View::make('banner_display')
                     ->label('Banner')
                     ->view('filament.components.banner-display')
@@ -59,6 +64,10 @@ class ReviewResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('user.avatar')
+                    ->searchable()
+                    ->label('Avatar'),
+
                 Tables\Columns\TextColumn::make('user.name')
                     ->searchable()
                     ->label('User'),
@@ -74,9 +83,9 @@ class ReviewResource extends Resource
                     ->searchable()
                     ->label('Rating'),
 
-                Tables\Columns\TextColumn::make('comment')
-                    ->searchable()
-                    ->label('Comment'),
+                // Tables\Columns\TextColumn::make('comment')
+                //     ->searchable()
+                //     ->label('Comment'),
             ])
             ->filters([
                 //
