@@ -53,6 +53,11 @@ class TransactionResource extends Resource
                 Forms\Components\TextInput::make('midtrans_booking_code')
                     ->required(),
 
+                Forms\Components\View::make('avatar_display')
+                    ->label('Avatar')
+                    ->view('filament.components.avatar-display')
+                    ->disabled(),
+
                 Forms\Components\View::make('banner_display')
                     ->label('Banner')
                     ->view('filament.components.banner-display')
@@ -64,6 +69,9 @@ class TransactionResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('user.avatar')
+                    ->label('Avatar'),
+
                 Tables\Columns\TextColumn::make('user.name')
                     ->searchable()
                     ->label('User'),
@@ -87,11 +95,11 @@ class TransactionResource extends Resource
                         'waiting' => 'info',
                     }),
 
-                Tables\Columns\TextColumn::make('midtrans_url')
-                    ->label('Url'),
+                // Tables\Columns\TextColumn::make('midtrans_url')
+                //     ->label('Url'),
 
-                Tables\Columns\TextColumn::make('midtrans_booking_code')
-                    ->label('Booking Code'),
+                // Tables\Columns\TextColumn::make('midtrans_booking_code')
+                //     ->label('Booking Code'),
             ])
             ->filters([
                 //

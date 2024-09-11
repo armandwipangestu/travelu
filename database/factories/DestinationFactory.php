@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Country;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Faker\Factory as FakerFactory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Destination>
@@ -17,8 +18,10 @@ class DestinationFactory extends Factory
      */
     public function definition(): array
     {
+        $faker = FakerFactory::create();
+
         return [
-            'name' => fake()->unique()->city(),
+            'name' => $faker->unique()->city(),
             'country_id' => Country::inRandomOrder()->value('id'),
             'description' => fake()->text(200),
         ];

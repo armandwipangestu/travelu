@@ -23,12 +23,22 @@ class UserSeeder extends Seeder
         $getUserModel->setAccessible(true);
         $getUserModel->invoke($filamentMakeUserCommand)::create([
             'name' => 'Admin',
-            'email' => 'admin@bwa.com',
+            'email' => 'admin@travelu.com',
             'password' => Hash::make('password'),
             'phone_number' => fake()->phoneNumber(),
             'address' => fake()->address(),
             'remember_token' => Str::random(10),
             'avatar' => 'default.png'
+        ]);
+
+        User::create([
+            'name' => 'Arman Dwi Pangestu',
+            'email' => 'arman@travelu.com',
+            'password' => Hash::make('password'),
+            'phone_number' => fake()->phoneNumber(),
+            'address' => fake()->address(),
+            'remember_token' => Str::random(10),
+            'avatar' => 'arman.png'
         ]);
 
         User::factory(10)->create();
