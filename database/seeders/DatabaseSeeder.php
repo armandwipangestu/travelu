@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             DestinationSeeder::class,
             HolidayPackageSeeder::class,
             TransactionSeeder::class,
+            ReviewSeeder::class,
         ]);
     }
 }
