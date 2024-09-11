@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\HolidayPackage;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -18,6 +19,7 @@ class DatabaseSeeder extends Seeder
             CountrySeeder::class,
             CategorySeeder::class,
             DestinationSeeder::class,
+            HolidayPackageSeeder::class,
         ]);
     }
 }
